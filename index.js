@@ -9,11 +9,20 @@ const orderRoutes = require('./routes/orders');
 const app = express();
 
 // Middleware
+import cors from "cors";
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true,
+  origin: [
+    "http://localhost:3000",
+    "https://ecommerc-ten-hazel.vercel.app"
+  ],
+  credentials: true
 }));
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 
 // Routes
 app.use('/api/products', productRoutes);
