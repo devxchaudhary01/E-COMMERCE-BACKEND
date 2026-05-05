@@ -11,13 +11,8 @@ const app = express();
 // Middleware
 import cors from "cors";
 
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://ecommerc-ten-hazel.vercel.app"
-  ],
-  credentials: true
-}));
+app.use(cors())
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
